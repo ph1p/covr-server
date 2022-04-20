@@ -1,4 +1,4 @@
-FROM hayd/deno:1.8.2
+FROM denoland/deno:1.20.6
 
 EXPOSE 3000
 
@@ -9,6 +9,7 @@ USER deno
 
 # These steps will be re-run upon each file change in your working directory:
 ADD . /app
+
 # Compile the main app so that it doesn't need to be compiled each startup/entry.
 RUN deno cache server.ts
 
