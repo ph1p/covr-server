@@ -1,6 +1,6 @@
-# Fyfill Server
+# Covr Server
 
-This is the simple server of https://github.com/ph1p/fyfill
+This is the simple server of https://github.com/ph1p/figma-covr
 
 ### Development
 

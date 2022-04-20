@@ -1,17 +1,17 @@
 version: '3.3'
 services:
-  fyfill:
+  covr:
     build: .
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.fyfill.tls'
-      - 'traefik.http.routers.fyfill.tls.certresolver=letsencryptresolver'
-      - 'traefik.http.services.fyfill.loadbalancer.server.port=3000'
-      - 'traefik.http.routers.fyfill.rule=Host(`fyfill.ph1p.dev`)'
-      - 'traefik.http.routers.fyfill.middlewares=sslheader@docker'
+      - 'traefik.http.routers.covr.tls'
+      - 'traefik.http.routers.covr.tls.certresolver=letsencryptresolver'
+      - 'traefik.http.services.covr.loadbalancer.server.port=3000'
+      - 'traefik.http.routers.covr.rule=Host(`covr.ph1p.dev`)'
+      - 'traefik.http.routers.covr.middlewares=sslheader@docker'
     environment:
       - PORT=3000
-      - URL=https://fyfill.ph1p.dev
+      - URL=https://covr.ph1p.dev
       - CLIENT_ID=
       - CLIENT_SECRET=
     networks:
