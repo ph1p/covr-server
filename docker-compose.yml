@@ -8,7 +8,6 @@ services:
       - 'traefik.http.routers.covr.tls.certresolver=letsencryptresolver'
       - 'traefik.http.services.covr.loadbalancer.server.port=3000'
       - 'traefik.http.routers.covr.rule=Host(`covr.ph1p.dev`)'
-      - 'traefik.http.routers.covr.middlewares=sslheader@docker'
     environment:
       - PORT=3000
       - URL=https://covr.ph1p.dev
