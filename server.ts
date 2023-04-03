@@ -22,7 +22,7 @@ router.get('/account/:id', function (ctx) {
   const state = temporaryList.get(ctx.params.id);
 
   if (state) {
-    for (let [key, value] of temporaryList) {
+    for (const [key, value] of temporaryList) {
       if (currentTimestamp - value.date > 60) {
         temporaryList.delete(key);
       }
@@ -60,7 +60,7 @@ router.get('/callback', async function (ctx) {
       params.append('redirect_uri', redirect_uri);
       params.append('grant_type', 'authorization_code');
 
-      let token: any = await (
+      const token: { access_token: string; refresh_token: string } = await (
         await fetch('https://accounts.spotify.com/api/token', {
           method: 'POST',
           body: params.toString(),
@@ -89,7 +89,6 @@ router.get('/callback', async function (ctx) {
           })
         ).json();
 
-        // @ts-ignore
         temporaryList.set(state, {
           data: {
             ...user,
@@ -157,7 +156,7 @@ router.get('/refresh_token', async function (ctx) {
     ctx.response.body = {
       access_token: (await response.json()).access_token,
     };
-  } catch (e) {
+  } catch {
     ctx.response.status = 400;
     ctx.response.body = {
       error: true,
